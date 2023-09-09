@@ -8,6 +8,11 @@ int main() {
 
   fill_array(numbers, 150);  // Calls the fill_array function
 
+  // Prints the original array
+  cout << "Original array: " << endl;
+  print_array(numbers, 150);
+  cout << endl << endl;;
+
   // Continuously loops
   while(true){
     try{
@@ -40,6 +45,7 @@ int main() {
   }
 
   // Prints the array
+  cout << "Current array: " << endl;
   print_array(numbers, 150);
   cout << endl << endl;
 
@@ -74,6 +80,7 @@ int main() {
   }
 
   // Prints the array
+  cout << "Current array: " << endl;
   print_array(numbers, 150);
   cout << endl << endl;
   
@@ -101,6 +108,7 @@ int main() {
   }
 
   // Prints the array
+  cout << "Current array: " << endl;
   print_array(numbers, 150);
   cout << endl << endl;
 
@@ -132,6 +140,7 @@ int main() {
   }
   
   // Prints the array
+  cout << "Current array: " << endl;
   print_array(numbers, 150);
   
   
