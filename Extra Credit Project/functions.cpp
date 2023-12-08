@@ -59,10 +59,10 @@ bool balanced(const string& str){
    post: Returns a number for the priority of the given operator (the higher the number, the higher the priority). Returns -1 if the operator is not recognized 
 */
 int get_order(char o){
-  if (o == '*' || o == '/' || o == '%'){
+  if(o == '*' || o == '/' || o == '%'){
     return 2;
   }
-  else if (o == '+' || o == '-'){
+  else if(o == '+' || o == '-'){
     return 1;
   }
   else{
@@ -82,13 +82,13 @@ string inf_to_postf(string inf){
   for (int i = 0; i < inf.length(); i++){    // loops through from 0 to the size of the given string
     char c = inf[i];
 
-    if (isalnum(c)){    // If the current character of the string is a numeber or letter, adds it to the postfix string
+    if(isalnum(c)){    // If the current character of the string is a numeber or letter, adds it to the postfix string
       postf += c;
     } 
-    else if (c == '(' || c == '{' || c == '['){  // If the current character is a opening type, pushes it onto the stack
+    else if(c == '(' || c == '{' || c == '['){  // If the current character is a opening type, pushes it onto the stack
       s.push(c);
     } 
-    else if (c == ')' || c == '}' || c == ']'){  // Determines if the curenr character is a closing type
+    else if(c == ')' || c == '}' || c == ']'){  // Determines if the curenr character is a closing type
       // Loops through while stack is not empty and the top of the stack is not a opening type
       while (!s.empty() && (s.top() != '(' && s.top() != '{' && s.top() != '[')){
         // Adds the top element to the postfix strong and removes it from the stack
@@ -98,9 +98,9 @@ string inf_to_postf(string inf){
 
       s.pop();    // Removes the top element
     } 
-    else {
+    else{
       // Loops through while the stack is not empty and the current character's priority is <= the top character of the stacks priority
-      while (!s.empty() && get_order(c) <= get_order(s.top())){
+      while(!s.empty() && get_order(c) <= get_order(s.top())){
         // Adds the top element to the postfix strong and removes it from the stack
         postf += s.top();
         s.pop();
@@ -111,7 +111,7 @@ string inf_to_postf(string inf){
   }
 
   // While the stack is not empty, adds the top character of the stack to the postfix string and removes it from the stack
-  while (!s.empty()){
+  while(!s.empty()){
     postf += s.top();
     s.pop();
   }
@@ -127,14 +127,14 @@ string balance(const string& str){
   string balanced = str;    // creates a variable and sets it to the given string
 
   // loops through each character in the given string
-  for (char c : str){
+  for(char c : str){
     // If the current character is an opening type, adds a closing type to balanced
-    if (open(c)){
+    if(open(c)){
       balanced += CLOSE[OPEN.find(c)];
     } 
     // If the current character is a closing type, if the balanced string is not empty, or the current character is not equal to the last character in the balanced string, adds the appropriate closing type to balanced
-    else if (closed(c)){
-      if (balanced.empty() || c != balanced.back()){
+    else if(closed(c)){
+      if(balanced.empty() || c != balanced.back()){
         balanced = OPEN[CLOSE.find(c)] + balanced;
       }
     }
@@ -159,15 +159,15 @@ string postf_to_inf(const string& postf){
   stack<string> s;    // Creates a stack
 
   // Loops through each character in the given string
-  for (char c : postf){
+  for(char c : postf){
     // Determines if the current character is a number or letter
-    if (isalnum(c)){
+    if(isalnum(c)){
       // Creates a string of length 1 called variable and sets it to the current character
       string variable(1, c);
       s.push(variable);    // Adds variable to the stack
     }
     // Determines if the given character is an operator
-    else if (isOperator(c)){
+    else if(isOperator(c)){
       // Creates a new string and sets it to the top element in the stack
       string var2 = s.top();
       s.pop();    // Removes the top element from the stack
